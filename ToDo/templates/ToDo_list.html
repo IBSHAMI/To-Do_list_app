@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text text-center">
+  <p >
+  {% if request.user.is_authenticated %}
+  Hello, {{request.user.name}}
+  {% else %}
+  Hello there,
+  {% endif %}
+  </p>
+  <a class="btn btn-primary" href="/create"> Click to create new ToDo</a>
+  </div>
+  <div class="col-4 offset-4">
+    {% for todo in todo_list %}
+    <div class="card mt-4">
+      <div class="card-header">
+        <a href="/{{ todo.id }}"><h4>{{ todo.name }}</h4></a>
+      </div>
+      <div class="card-body">
+        <p>
+        It is due on {{ todo.duedate }}
+        </p>
+        <a href="/{{todo.id}}/update" class="btn btn-secondary"> Update Entry</a>
+        <a href="/{{todo.id}}/delete" class="btn btn-secondary"> delete Entry</a>
+
+    </div>
+    </div>
+    {% endfor %}
+  </ul>
+
+  {% endblock %}

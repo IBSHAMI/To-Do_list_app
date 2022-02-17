@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo App</title>
+</head>
+<body>
+  {% if request.user.is_authenticated %}
+  Hello, {{request.user.name}}
+  {% else %}
+  Hello
+  {% endif %}
+  the todo is: {{todo.name}} --- {{todo.duedate}}
+
+  </ul>
+</body>
+</html>
